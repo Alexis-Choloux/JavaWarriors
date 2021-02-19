@@ -30,39 +30,91 @@ public class Warriors implements WarriorsAPI {
 
         warriors.engine.Map newMap1 = new warriors.engine.Map("Pepinieros", 64);
 
-        Enemy goblin = new Enemy(6,1);
-        Square squareGoblin = new Square(goblin);
-        Enemy sorcerer = new Enemy(9,2);
-        Square squareSorcerer = new Square(sorcerer);
-        Enemy dragon = new Enemy(9,2);
-        Square squareDragon = new Square(dragon);
+        Weapon arc = new Weapon("arc", 1);
+        Square caseArc = new Square(arc);
+        Weapon massue = new Weapon("massue", 3);
+        Square caseMassue = new Square(massue);
+        Weapon epee = new Weapon("epee", 5);
+        Square caseEpee = new Square(epee);
+        Spell eclair = new Spell("eclair", 2);
+        Square caseEclair = new Square(eclair);
+        Spell bouledefeu = new Spell("boule de feu", 7);
+        Square caseBouleDeFeu = new Square(bouledefeu);
+        Potion potionMineure = new Potion("potion mineure", 1);
+        Square casePotionMineure = new Square(potionMineure);
+        Potion potionStandard = new Potion("potion standard", 2);
+        Square casePotionstandard = new Square(potionStandard);
+        Potion potionGrande = new Potion("grande potion", 5);
+        Square caseGrandePotion = new Square(potionGrande);
 
-//        Weapon arc = new Weapon("arc", 1);
+        Event empty = new Event();
+        Square EmptySquare = new Square(empty);
 
-        newMap1.addToMap(squareGoblin,3);
-        newMap1.addToMap(squareGoblin,6);
-        newMap1.addToMap(squareGoblin,9);
-        newMap1.addToMap(squareGoblin,12);
-        newMap1.addToMap(squareGoblin,15);
-        newMap1.addToMap(squareGoblin,18);
-        newMap1.addToMap(squareGoblin,21);
-        newMap1.addToMap(squareGoblin,24);
-        newMap1.addToMap(squareGoblin,27);
-        newMap1.addToMap(squareGoblin,30);
-        newMap1.addToMap(squareSorcerer,10);
-        newMap1.addToMap(squareSorcerer,20);
-        newMap1.addToMap(squareSorcerer,25);
-        newMap1.addToMap(squareSorcerer,32);
-        newMap1.addToMap(squareSorcerer,35);
-        newMap1.addToMap(squareSorcerer,36);
-        newMap1.addToMap(squareSorcerer,37);
-        newMap1.addToMap(squareSorcerer,40);
-        newMap1.addToMap(squareSorcerer,44);
-        newMap1.addToMap(squareSorcerer,47);
-        newMap1.addToMap(squareDragon,45);
-        newMap1.addToMap(squareDragon,52);
-        newMap1.addToMap(squareDragon,56);
-        newMap1.addToMap(squareDragon,62);
+        newMap1.addToMap(EmptySquare, 0);
+        newMap1.addToMap(caseEclair, 1);
+        newMap1.addToMap(caseArc, 2);
+        newMap1.addToMap(new Square(new Enemy("gobelin", 1, 6)), 3);
+        newMap1.addToMap(caseEclair, 4);
+        newMap1.addToMap(caseMassue, 5);
+        newMap1.addToMap(new Square(new Enemy("gobelin", 1, 6)), 6);
+        newMap1.addToMap(casePotionMineure, 7);
+        newMap1.addToMap(caseEclair, 8);
+        newMap1.addToMap(new Square(new Enemy("gobelin", 1, 6)), 9);
+        newMap1.addToMap(new Square(new Enemy("sorcier", 2, 9)), 10);
+        newMap1.addToMap(caseArc, 11);
+        newMap1.addToMap(new Square(new Enemy("gobelin", 1, 6)), 12);
+        newMap1.addToMap(casePotionMineure, 13);
+        newMap1.addToMap(caseArc, 14);
+        newMap1.addToMap(new Square(new Enemy("gobelin", 1, 6)), 15);
+        newMap1.addToMap(EmptySquare, 16);
+        newMap1.addToMap(caseEclair, 17);
+        newMap1.addToMap(new Square(new Enemy("gobelin", 1, 6)), 18);
+        newMap1.addToMap(caseArc, 19);
+        newMap1.addToMap(new Square(new Enemy("sorcier", 2, 9)), 20);
+        newMap1.addToMap(new Square(new Enemy("gobelin", 1, 6)), 21);
+        newMap1.addToMap(caseMassue, 22);
+        newMap1.addToMap(caseEclair, 23);
+        newMap1.addToMap(new Square(new Enemy("gobelin", 1, 6)), 24);
+        newMap1.addToMap(new Square(new Enemy("sorcier", 2, 9)), 25);
+        newMap1.addToMap(caseArc, 26);
+        newMap1.addToMap(new Square(new Enemy("gobelin", 1, 6)), 27);
+        newMap1.addToMap(casePotionMineure, 28);
+        newMap1.addToMap(casePotionMineure, 29);
+        newMap1.addToMap(new Square(new Enemy("gobelin", 1, 6)), 30);
+        newMap1.addToMap(casePotionstandard, 31);
+        newMap1.addToMap(new Square(new Enemy("sorcier", 2, 9)), 32);
+        newMap1.addToMap(casePotionMineure, 33);
+        newMap1.addToMap(EmptySquare, 34);
+        newMap1.addToMap(new Square(new Enemy("sorcier", 2, 9)), 35);
+        newMap1.addToMap(new Square(new Enemy("sorcier", 2, 9)), 36);
+        newMap1.addToMap(new Square(new Enemy("sorcier", 2, 9)), 37);
+        newMap1.addToMap(caseMassue, 38);
+        newMap1.addToMap(casePotionstandard, 39);
+        newMap1.addToMap(new Square(new Enemy("sorcier", 2, 9)), 40);
+        newMap1.addToMap(caseGrandePotion, 41);
+        newMap1.addToMap(caseEpee, 42);
+        newMap1.addToMap(casePotionstandard, 43);
+        newMap1.addToMap(new Square(new Enemy("sorcier", 2, 9)), 44);
+        newMap1.addToMap(new Square(new Enemy("dragon", 4, 15)), 45);
+        newMap1.addToMap(EmptySquare, 46);
+        newMap1.addToMap(new Square(new Enemy("sorcier", 2, 9)), 47);
+        newMap1.addToMap(caseBouleDeFeu, 48);
+        newMap1.addToMap(caseBouleDeFeu, 49);
+        newMap1.addToMap(EmptySquare, 50);
+        newMap1.addToMap(EmptySquare, 51);
+        newMap1.addToMap(new Square(new Enemy("dragon", 4, 15)), 52);
+        newMap1.addToMap(caseEpee, 53);
+        newMap1.addToMap(EmptySquare, 54);
+        newMap1.addToMap(EmptySquare, 55);
+        newMap1.addToMap(new Square(new Enemy("dragon", 4, 15)), 56);
+        newMap1.addToMap(EmptySquare, 57);
+        newMap1.addToMap(EmptySquare, 58);
+        newMap1.addToMap(EmptySquare, 59);
+        newMap1.addToMap(EmptySquare, 60);
+        newMap1.addToMap(EmptySquare, 61);
+        newMap1.addToMap(new Square(new Enemy("dragon", 4, 15)), 62);
+        newMap1.addToMap(EmptySquare, 63);
+        newMap1.addToMap(EmptySquare, 64);
 
         mapList.add(newMap1);
     }
@@ -87,16 +139,45 @@ public class Warriors implements WarriorsAPI {
     @Override
     public GameState nextTurn(String gameID) {
 
+        String message = "";
+
         //générer un résultat de dé entre 1 et 6               pas de system out, stocker dans lastlog
         diceResult = diceRoll();
+
+        warriors.engine.Map map = (warriors.engine.Map) gameState.getMap();
+
         //déplacer le perso et afficher la case actuelle
         gameState.setCurrentSquare(gameState.getCurrentSquare() + diceResult);
+
+
         if (gameState.getCurrentSquare() >= 64) {
             gameState.setCurrentSquare(64);
             gameState.setLastLog("Vous avez fait un " + diceResult + " et vous êtes sur la case " + gameState.getCurrentSquare() + ", vous êtes arrivés");
             gameState.setGameStatus(GameStatus.FINISHED);
         } else {
-            gameState.setLastLog("Vous avez fait un " + diceResult + " et vous êtes sur la case " + gameState.getCurrentSquare());
+            Square currentSquare = map.getSquareContent(gameState.getCurrentSquare());
+            String squareType = currentSquare.getEvent().getType();
+
+            switch (squareType) {
+                case "ennemi":
+                    Event enemy = currentSquare.getEvent();
+
+                break;
+                case "potion":
+
+                break;
+                case "sort":
+
+                    break;
+                case "arme":
+
+                    break;
+                default:
+
+                    break;
+            }
+            gameState.setLastLog(message);
+//            "Vous avez fait un " + diceResult + " et vous êtes sur la case " + gameState.getCurrentSquare() + "\nC'est une case " +  squareType
         }
         return gameState;
     }

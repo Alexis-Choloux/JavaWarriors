@@ -26,4 +26,8 @@ public class Map implements warriors.contracts.Map {
     public void addToMap(Square square, int index) {
         mapSquares.add(index, square);
     }
+
+    public Square getSquareContent(int index) {
+        return mapSquares.get(index);
+    }
 }
