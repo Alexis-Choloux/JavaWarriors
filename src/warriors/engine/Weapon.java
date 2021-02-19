@@ -2,12 +2,14 @@ package warriors.engine;
 
 public class Weapon extends Surprise {
 
-    public Weapon(String name, Integer points) {
-        super(name, "arme", points);
+    public Weapon(String name, int attackLevel) {
+        this.name = name;
+        this.attackLevel = attackLevel;
+        this.type = "arme";
     }
 
     @Override
     public String toString() {
-        return "Vous avez trouvé une " + type + ". Type : " + surpriseName + " Bonus : +" + bonusPoints + " point d'attaque !";
+        return "      . Type : " + name + ". Bonus : +" + attackLevel + " point d'attaque !";
     }
 }

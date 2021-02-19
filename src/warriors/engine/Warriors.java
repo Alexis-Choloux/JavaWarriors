@@ -144,6 +144,8 @@ public class Warriors implements WarriorsAPI {
         //générer un résultat de dé entre 1 et 6               pas de system out, stocker dans lastlog
         diceResult = diceRoll();
 
+        Hero hero = gameState.getHero();
+
         warriors.engine.Map map = (warriors.engine.Map) gameState.getMap();
 
         //déplacer le perso et afficher la case actuelle
@@ -152,33 +154,86 @@ public class Warriors implements WarriorsAPI {
 
         if (gameState.getCurrentSquare() >= 64) {
             gameState.setCurrentSquare(64);
-            gameState.setLastLog("Vous avez fait un " + diceResult + " et vous êtes sur la case " + gameState.getCurrentSquare() + ", vous êtes arrivés");
+            message = hero.getName() + " a fait un " + diceResult + " et est sur la case " + gameState.getCurrentSquare() + ", il est arrivé";
             gameState.setGameStatus(GameStatus.FINISHED);
         } else {
             Square currentSquare = map.getSquareContent(gameState.getCurrentSquare());
             String squareType = currentSquare.getEvent().getType();
-
+            message = "\n" + hero.getName() + " a fait un " + diceResult + " et est sur la case " + gameState.getCurrentSquare() + "\n   C'est une case " +  squareType;
             switch (squareType) {
+
                 case "ennemi":
                     Event enemy = currentSquare.getEvent();
-
+                    message += "\n" + enemy.toString();
                 break;
+
                 case "potion":
+                    Event potion = currentSquare.getEvent();
+                    message += "\n   " + potion.toString();
 
-                break;
-                case "sort":
+                    ((LocalHero) hero).setLifeLevel(hero.getLife() + potion.getLifeLevel());
 
+                    if (hero.getLife() > ((LocalHero) hero).getMaxLife()) {
+                        ((LocalHero) hero).setLifeLevel(((LocalHero) hero).getMaxLife());
+                        message = message + "\n            (La vie de " + hero.getName() + " est au maximum !)";
+                    }
+                    message += "\n            Le vie de " + hero.getName() + " est de : " + hero.getLife();
                     break;
-                case "arme":
 
+                case "sort":
+                    Event sort = currentSquare.getEvent();
+                    message += "\n" + sort.toString();
+
+                    Spell spell = new Spell(currentSquare.getEvent().getName(), currentSquare.getEvent().getAttackLevel());
+
+                    if (hero instanceof Wizard) {
+                        ((LocalHero) hero).deleteSpell();
+                        ((LocalHero) hero).setSpell(spell);
+                        ((LocalHero) hero).setAttackLevel(hero.getAttackLevel() + spell.getAttackLevel());
+
+                        if (hero.getAttackLevel() > ((LocalHero) hero).getMaxAttack()){
+                            ((LocalHero) hero).setAttackLevel(((LocalHero) hero).getMaxAttack());
+                            message = message + "\n         (Attaque max' atteinte !)";
+                        }
+                    }
+                    else {
+                        message = message + "\n         (Inutile pour un guerrier !)";
+                    }
+                    message += "\n         Le niveau d'attaque de " + hero.getName() + " est de : " + hero.getAttackLevel();
+                    break;
+
+                case "arme":
+                    Event arme = currentSquare.getEvent();
+                    message += "\n" + arme.toString();
+
+                    Weapon weapon = new Weapon(currentSquare.getEvent().getName(), currentSquare.getEvent().getAttackLevel());
+
+                    if (hero instanceof Warrior) {
+                        ((LocalHero) hero).deleteWeapon();
+                        ((LocalHero) hero).setWeapon(weapon);
+                        ((LocalHero) hero).setAttackLevel(hero.getAttackLevel() + weapon.getAttackLevel());
+
+                        if (hero.getAttackLevel() > ((LocalHero) hero).getMaxAttack()){
+                            ((LocalHero) hero).setAttackLevel(((LocalHero) hero).getMaxAttack());
+                            message = message + "\n         (Attaque max' atteinte !)";
+                        }
+                    }
+                    else {
+                        message = message + "\n         (Inutile pour un sorcier !)";
+                    }
+                    message += "\n         Le niveau d'attaque de " + hero.getName() + " est de : " + hero.getAttackLevel();
                     break;
                 default:
 
                     break;
             }
-            gameState.setLastLog(message);
-//            "Vous avez fait un " + diceResult + " et vous êtes sur la case " + gameState.getCurrentSquare() + "\nC'est une case " +  squareType
+            if (hero.getLife()==0){
+                this.gameState.setGameStatus(GameStatus.GAME_OVER);
+                message = message + "\n" + hero.getName() + " est mort ! Ahahahah !!!!!";
+            }
         }
+        gameState.setLastLog(message);
+//
         return gameState;
     }
 

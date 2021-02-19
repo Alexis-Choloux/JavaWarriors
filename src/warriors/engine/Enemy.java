@@ -1,31 +1,13 @@
 package warriors.engine;
 
 public class Enemy extends Event {
-    private String enemyName;
-    private int enemyLife;
-    private int enemyAttack;
 
-    public Enemy (String name, Integer life, Integer attack) {
-        super("ennemi");
-        enemyName = name;
-        enemyLife = life;
-        enemyAttack = attack;
-    }
-
-    public String getName() {
-        return enemyName;
-    }
-
-    public int getLife() {
-        return enemyLife;
-    }
-
-    public int getAttackLevel() {
-        return enemyAttack;
+    public Enemy (String name, Integer lifeLevel, Integer attackLevel) {
+        super(name, lifeLevel, attackLevel, "ennemi");
     }
 
     @Override
     public String toString() {
-        return "C'est un " + enemyName + ", il a " + enemyAttack + " points d'attaque et " + enemyLife + " points de vie !";
+        return "      C'est un " + name + ", il a " + attackLevel + " points d'attaque et " + lifeLevel + " points de vie !";
     }
 }

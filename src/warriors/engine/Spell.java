@@ -2,12 +2,14 @@ package warriors.engine;
 
 public class Spell extends Surprise {
 
-    public Spell(String name, Integer points) {
-        super(name, "sort", points);
+    public Spell(String name, int attackLevel) {
+        this.name = name;
+        this.attackLevel = attackLevel;
+        this.type = "sort";
     }
 
     @Override
     public String toString() {
-        return "Vous avez trouvé un " + type + ". Type : " + surpriseName + " Bonus : +" + bonusPoints + " point d'attaque !";
+        return "      . Type : " + name + ". Bonus : +" + attackLevel + " point d'attaque !";
     }
 }

@@ -2,12 +2,15 @@ package warriors.engine;
 
 public class Potion extends Surprise {
 
-    public Potion(String name, Integer points) {
-        super(name, "potion", points);
+    public Potion(String name, int lifeLevel) {
+        this.name = name;
+        this.lifeLevel = lifeLevel;
+        this.type = "potion";
     }
 
     @Override
     public String toString() {
-        return "Vous avez trouvé une " + type + ". Type : " + surpriseName + " Bonus : +" + bonusPoints + " point de vie !";
+        return "      . Type : " + name + ". Bonus : +" + lifeLevel + " point de vie !";
     }
+
 }
